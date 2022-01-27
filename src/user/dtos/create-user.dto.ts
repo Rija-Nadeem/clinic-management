@@ -3,9 +3,6 @@ import { IsBoolean, IsEmail, IsNumber, IsOptional, IsString } from "class-valida
 export class CreateUserDto{
 
     @IsEmail()
-    _id: string;
-
-    @IsEmail()
     email: string;
 
     @IsString()
