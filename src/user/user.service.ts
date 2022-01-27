@@ -3,6 +3,12 @@ import { CreateUserDto } from './dtos/create-user.dto';
 import { User } from './user.model';
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
+import { throwIfEmpty } from 'rxjs';
+
+interface jwtUserData{
+    id: string,
+    status: boolean
+  }
 
 @Injectable()
 export class UserService {
@@ -35,7 +41,7 @@ export class UserService {
     // }
 
     async findUserByEmail(email: string){
-        return await this.userModel.findOne({ email }).exec() as User;
+        return await this.userModel.findOne({ email }).exec();
         // let user: User;
         // try{
         //     user = await this.userModel.findOne({ email }).exec();
@@ -64,4 +70,16 @@ export class UserService {
     //     }
     //     return item;
     // }
+
+    async activateUser(userData: jwtUserData, email: string){
+        const user = await this.findUserByEmail(email);
+        if(userData.id === email && user){
+           user.status = userData.status;
+           user.save();
+           return 'User activated'
+
+        } else{
+            throw new Error('activation failed');
+        }
+    }
 }

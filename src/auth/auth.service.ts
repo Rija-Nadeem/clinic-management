@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common';
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
+import { SendGridService } from "@anchan828/nest-sendgrid";
 
 const scrypt = promisify(_scrypt);
 
@@ -16,6 +17,7 @@ export class AuthService {
   constructor(
     private usersService: UserService,
     private jwtService: JwtService,
+    private readonly sendGrid: SendGridService
   ) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
@@ -34,7 +36,6 @@ export class AuthService {
   }
 
   login(user) {
-    console.log('auth service', user);
     const payload = { name: user.name, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
@@ -71,7 +72,23 @@ export class AuthService {
       password: result,
     });
 
-    //return the user
+    //generating jwt
+    const payload = { sub: userCreated, status: true};
+    const access_token = this.jwtService.sign(payload)
+
+    //sending token to user via email
+    const apiSent = await this.sendGrid.send({
+      to: email,
+      from: "mauwia.atif@gmail.com",
+      subject: "Sending with SendGrid is Fun",
+      text: `your token : ${access_token}`,
+      html: `<strong> ${name}, here is your token : ${access_token}`,
+    });
+
+    // console.log('apiSent', apiSent);
+
+    //return the user id
     return userCreated;
   }
+
 }

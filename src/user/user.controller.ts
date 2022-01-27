@@ -13,6 +13,8 @@ import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UserService } from './user.service';
 
+
+
 @Controller('auth')
 export class UserController {
   constructor(private service: UserService, private authService: AuthService) {}
@@ -31,14 +33,21 @@ export class UserController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req) {
-    console.log('login', req.user);
+    // console.log('login', req.user);
     return this.authService.login(req.user);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('protected')
   print(@Request() req) {
-    console.log('protected', req.user);
+    // console.log('protected', req.user);
     return 'hello from the other side!';
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('activate')
+  activateUser(@Request() req, @Body('email') email: string){
+    return this.service.activateUser(req.user, email);
+  }
+
 }

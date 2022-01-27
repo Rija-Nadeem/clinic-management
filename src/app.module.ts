@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { TreatmentModule } from './treatment/treatment.module';
 import { AppointmentModule } from './appointment/appointment.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -16,6 +17,10 @@ import { AuthModule } from './auth/auth.module';
     TreatmentModule,
     AppointmentModule,
     AuthModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.development`,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
