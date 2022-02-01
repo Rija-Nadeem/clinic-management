@@ -1,0 +1,9 @@
+### creating a prescribtion
+POST http://localhost:3000/treatment
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGF0aWVudCIsInN1YiI6IjYxZjg5MjYxMzZjNGVlMjEwMDMwYWVjYiIsInR5cGUiOjEsImVtYWlsIjoicGF0aWVudEB4b3JkLmNvbSIsImlhdCI6MTY0MzY4MDY1N30.Kr5wCW-Ib_AfROtyKCvBS4p79fmV2USkmR6QRKnmJMI
+
+{
+    "appointmentId":"61f8945afb440d126ca64caa",
+    "prescribtion":"panadol twice a day"
+}

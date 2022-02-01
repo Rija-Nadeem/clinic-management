@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from 'src/user/user.model';
@@ -26,7 +26,13 @@ export class AppointmentService {
         
     }
 
-     private async isValidUserType(email: string, type: number){
+    async maskAsDone(appointmentId:string) {
+        const appointment = await this.findAppointment(appointmentId);
+        appointment.status = 'done';
+        appointment.save();
+    }
+
+    private async isValidUserType(email: string, type: number){
         //  let user: User;
 
          try{
@@ -38,10 +44,16 @@ export class AppointmentService {
          catch(err){
              throw new BadRequestException(err.message ? err.message : `${email} does not exists`);
          }
+    }
 
-        // const user = await this.userService.findUserByEmail(email);
-        // console.log('user', user, email)
-
-         
+    private async findAppointment(id: string) {
+        let item;
+        try{
+            item = await this.model.findById(id);
+        }
+        catch(err){
+            throw new NotFoundException(err.message);
+        }
+        return item;
     }
 }
