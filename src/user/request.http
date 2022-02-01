@@ -4,10 +4,10 @@ POST http://localhost:3000/auth/register
 content-type: application/json
 
 {
-    "name": "Rija",
-    "email": "rija@xord.com",
+    "name": "Patient",
+    "email": "patient@xord.com",
     "password": "saltExample",
-    "type": 0
+    "type": 1
 }
 
 ### login
@@ -16,21 +16,21 @@ POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-    "email":"rija@example.com",
-    "password":"rijaexample"
+    "email":"patient@xord.com",
+    "password":"saltExample"
 }
 
 ### accessing a protected route
 
 GET http://localhost:3000/auth/protected
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWx0MUBleGFtcGxlLmNvbSIsInN0YXR1cyI6dHJ1ZSwiaWF0IjoxNjQzMzE1MDYwLCJleHAiOjE2NDMzMTY4NjB9.SaYzjY5hqSpV_8rMLhqj4BaOsugXIKA7m-pIrnMVDZM
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmlqYTEiLCJzdWIiOiJyaWphMUB4b3JkLmNvbSIsInR5cGUiOjAsImlhdCI6MTY0MzY2NjExNn0.pNzBkeSLxmHIpnQ0D5TX3DTVVnnZ7fi5f-uYSHZxjDY
 
 
 ### activate user
 POST http://localhost:3000/auth/activate
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyaWphQHhvcmQuY29tIiwic3RhdHVzIjp0cnVlLCJpYXQiOjE2NDMzMjQ1MTYsImV4cCI6MTY0MzMyNjMxNn0.svPYfo7Kr0BBQKXaUTAAnVTk2dhod5ktHg2vpQEKWmI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWY4OTI2MTM2YzRlZTIxMDAzMGFlY2IiLCJzdGF0dXMiOnRydWUsImVtYWlsIjoicGF0aWVudEB4b3JkLmNvbSIsImlhdCI6MTY0MzY4MDM1MywiZXhwIjoxNjQzNjgyMTUzfQ.DowtDm3acFF10r3Z99lqRTLM-iL1cPWp6vt-ZFKXZHA
 
 {
-    "email": "rija@xord.com"
+    "email": "patient@xord.com"
 }

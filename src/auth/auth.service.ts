@@ -5,6 +5,7 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
@@ -21,24 +22,36 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
-    // const user = await this.usersService.findUserByEmail(email);
     let user: User;
+
     try {
       user = await this.usersService.findUserByEmail(email);
     } catch (err) {
-      throw new NotFoundException(err.message);
+      throw new NotFoundException('Email does not exists');
     }
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
-      return result;
+
+    if(!user.status){
+      throw new UnauthorizedException('Please activate your account to proceed');
     }
-    return null;
+
+    //check if password was correct
+
+        //extract salt from password
+        const [salt, dbHash] = user.password.split('.');
+
+        //generate hash with the salt and user input password
+        const hash = (await scrypt(pass, salt, 32)) as Buffer
+
+        //compare hashes
+        if( dbHash !== hash.toString('hex') ) throw new BadRequestException('Incorrect password');
+
+    return user;
   }
 
-  login(user) {
-    const payload = { name: user.name, sub: user.id };
+  login(user: any) {
+    const payload = { name: user.name, sub: user.id, type: user.type, email: user.email };
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(payload), //does not have any expiration time
     };
   }
 
@@ -73,11 +86,13 @@ export class AuthService {
     });
 
     //generating jwt
-    const payload = { sub: userCreated, status: true};
-    const access_token = this.jwtService.sign(payload)
+    const payload = { sub: userCreated, status: true, email};
+    const access_token = this.jwtService.sign(payload, {expiresIn:'30m'})
+    // const access_token = this.jwtService.sign(payload)
+
 
     //sending token to user via email
-    const apiSent = await this.sendGrid.send({
+    await this.sendGrid.send({
       to: email,
       from: "mauwia.atif@gmail.com",
       subject: "Sending with SendGrid is Fun",
@@ -88,7 +103,7 @@ export class AuthService {
     // console.log('apiSent', apiSent);
 
     //return the user id
-    return userCreated;
+    return { id: userCreated, token: access_token};
   }
 
 }

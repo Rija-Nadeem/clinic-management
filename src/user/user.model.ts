@@ -1,8 +1,7 @@
 import * as mongoose from "mongoose";
 
 export const UserSchema = new mongoose.Schema({
-    _id: {type: String, required: true},
-    email: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
     name: {type: String, required: true},
     password: {type: String, required: true},
     type: {type: Number, required: true}, // 0 = doctor 1 = patient
@@ -10,7 +9,6 @@ export const UserSchema = new mongoose.Schema({
 })
 
 export interface User{
-    _id: string;
     email: string;
     name: string;
     password: string;

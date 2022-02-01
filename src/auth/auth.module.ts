@@ -21,7 +21,7 @@ import { SendGridModule } from "@anchan828/nest-sendgrid";
       useFactory: async (configService: ConfigService) => {
         return {
           secret: configService.get<string>('JWT_KEY'),
-          signOptions: { expiresIn: '30m' },
+          // signOptions: { expiresIn: '30m' },
         };
       },
       inject: [ConfigService]

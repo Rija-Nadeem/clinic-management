@@ -1,0 +1,9 @@
+### creating an appointment
+POST http://localhost:3000/appointment
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGF0aWVudCIsInN1YiI6IjYxZjg5MjYxMzZjNGVlMjEwMDMwYWVjYiIsInR5cGUiOjEsImVtYWlsIjoicGF0aWVudEB4b3JkLmNvbSIsImlhdCI6MTY0MzY4MDY1N30.Kr5wCW-Ib_AfROtyKCvBS4p79fmV2USkmR6QRKnmJMI
+
+{
+    "time":"10am-11am",
+    "docId":"doctor@xord.com"
+}

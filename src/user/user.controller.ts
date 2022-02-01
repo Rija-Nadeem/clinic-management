@@ -10,7 +10,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { UserDto } from './dtos/user.dto';
 import { UserService } from './user.service';
 
 
@@ -33,7 +35,6 @@ export class UserController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req) {
-    // console.log('login', req.user);
     return this.authService.login(req.user);
   }
 
@@ -47,7 +48,9 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Post('activate')
   activateUser(@Request() req, @Body('email') email: string){
+    // console.log('user', req.user)
     return this.service.activateUser(req.user, email);
   }
+
 
 }
