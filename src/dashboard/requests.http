@@ -1,0 +1,14 @@
+### get treatments for both users depending on token data
+GET http://localhost:3000/dashboard/treatments
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRG9jdG9yIiwic3ViIjoiNjFmODkyMzQzNmM0ZWUyMTAwMzBhZWM2IiwidHlwZSI6MCwiZW1haWwiOiJkb2N0b3JAeG9yZC5jb20iLCJpYXQiOjE2NDM3NzQzNDh9.kmNxmntTKgM_MHgjra7jl2c3I-jEVjrg5sXHENAuiHM
+
+### get appointments for both users depending on token data
+GET http://localhost:3000/dashboard/appointments
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRG9jdG9yIiwic3ViIjoiNjFmODkyMzQzNmM0ZWUyMTAwMzBhZWM2IiwidHlwZSI6MCwiZW1haWwiOiJkb2N0b3JAeG9yZC5jb20iLCJpYXQiOjE2NDM3NzQzNDh9.kmNxmntTKgM_MHgjra7jl2c3I-jEVjrg5sXHENAuiHM
+
+### get all active doctors
+GET http://localhost:3000/dashboard/doctors
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRG9jdG9yIiwic3ViIjoiNjFmODkyMzQzNmM0ZWUyMTAwMzBhZWM2IiwidHlwZSI6MCwiZW1haWwiOiJkb2N0b3JAeG9yZC5jb20iLCJpYXQiOjE2NDM3NzQzNDh9.kmNxmntTKgM_MHgjra7jl2c3I-jEVjrg5sXHENAuiHM

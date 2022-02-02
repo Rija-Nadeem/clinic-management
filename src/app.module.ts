@@ -7,6 +7,7 @@ import { TreatmentModule } from './treatment/treatment.module';
 import { AppointmentModule } from './appointment/appointment.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
       envFilePath: `.env`,
     }),
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],

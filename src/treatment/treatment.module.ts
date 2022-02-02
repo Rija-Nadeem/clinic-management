@@ -8,6 +8,7 @@ import { TreatmentService } from './treatment.service';
 @Module({
   imports:[MongooseModule.forFeature([{name:'Treatment', schema: TreatmentSchema}]), AppointmentModule],
   controllers: [TreatmentController],
-  providers: [TreatmentService]
+  providers: [TreatmentService],
+  exports:[TreatmentService]
 })
 export class TreatmentModule {}

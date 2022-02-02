@@ -32,6 +32,11 @@ export class AppointmentService {
         appointment.save();
     }
 
+    async getAppointmentsById(id: string, field: string){
+        const result = await this.model.find({[field]: id}).exec();
+        return result;
+    }
+
     private async isValidUserType(email: string, type: number){
         //  let user: User;
 

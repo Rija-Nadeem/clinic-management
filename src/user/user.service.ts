@@ -30,6 +30,10 @@ export class UserService {
         return await this.userModel.findOne({ email }).exec();
     }
 
+    async getAllDoctors(){
+        return await this.userModel.find({ type: 0 }).exec();
+    }
+
     async activateUser(userData: jwtUserData, email: string){
         const user = await this.findUserByEmail(email);
         console.log('check conditions', userData, email)

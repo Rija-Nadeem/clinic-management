@@ -18,4 +18,9 @@ export class TreatmentService {
         await this.appointmentService.maskAsDone(appointmentId);
         return recordCreated.id as string;
     }
+
+    async getAllTreatments(){
+        const results = await this.model.find().populate('appointmentId').exec();
+        return results;
+    }
 }
