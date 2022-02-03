@@ -31,7 +31,7 @@ export class UserService {
     }
 
     async getAllDoctors(){
-        return await this.userModel.find({ type: 0, status: true }).select({password:0, type:0}).exec();
+        return await this.userModel.find({ type: 0, status: true }).select('-password -type').exec();
     }
 
     async activateUser(userData: jwtUserData, email: string){
