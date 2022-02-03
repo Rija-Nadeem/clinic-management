@@ -1,9 +1,13 @@
 ### creating a prescribtion
 POST http://localhost:3000/treatment
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGF0aWVudCIsInN1YiI6IjYxZjg5MjYxMzZjNGVlMjEwMDMwYWVjYiIsInR5cGUiOjEsImVtYWlsIjoicGF0aWVudEB4b3JkLmNvbSIsImlhdCI6MTY0MzY4MDY1N30.Kr5wCW-Ib_AfROtyKCvBS4p79fmV2USkmR6QRKnmJMI
+#doc
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSGluYSIsInN1YiI6IjYxZmEyZGZmODI4ZjJmNzE1OWI4OTIzYyIsInR5cGUiOjAsImVtYWlsIjoiaGluYUB4b3JkLmNvbSIsImlhdCI6MTY0MzgyNjc0OX0.IwVMOfoTzBz7PGt-PgIF0yA4h5F9kU_YMdAh6w3-_es
+#patient
+# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmlqYSIsInN1YiI6IjYxZmEyZDk3M2M0N2I4MDNiNjNkMzU0OSIsInR5cGUiOjEsImVtYWlsIjoicmlqYUB4b3JkLmNvbSIsImlhdCI6MTY0Mzc4NTgxMX0.pqWJsGCm0DKkItWFE1pIECnx8QKRVMxKqq-tZmlLigU
+
 
 {
-    "appointmentId":"61f8945afb440d126ca64caa",
-    "prescribtion":"panadol twice a day"
+    "appointmentId":"61fa2e85828f2f7159b89243",
+    "prescribtion":"brofin twice a day"
 }

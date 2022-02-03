@@ -31,12 +31,12 @@ export class UserService {
     }
 
     async getAllDoctors(){
-        return await this.userModel.find({ type: 0 }).exec();
+        return await this.userModel.find({ type: 0, status: true }).select({password:0, type:0}).exec();
     }
 
     async activateUser(userData: jwtUserData, email: string){
         const user = await this.findUserByEmail(email);
-        console.log('check conditions', userData, email)
+        // console.log('check conditions', userData, email)
         if(userData.email === email && user){
            user.status = userData.status;
            user.save();

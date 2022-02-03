@@ -101,7 +101,7 @@ export class AuthService {
     });
 
     // console.log('apiSent', apiSent);
-
+    // console.log('test', access_token, { id: userCreated, token: access_token})
     //return the user id
     return { id: userCreated, token: access_token};
   }

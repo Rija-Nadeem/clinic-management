@@ -4,10 +4,10 @@ POST http://localhost:3000/auth/register
 content-type: application/json
 
 {
-    "name": "Patient",
-    "email": "patient@xord.com",
+    "name": "Hina",
+    "email": "hina@xord.com",
     "password": "saltExample",
-    "type": 1
+    "type": 0
 }
 
 ### login
@@ -16,7 +16,7 @@ POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-    "email":"doctor@xord.com",
+    "email":"hina@xord.com",
     "password":"saltExample"
 }
 
@@ -29,8 +29,8 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmlqYTEiL
 ### activate user
 POST http://localhost:3000/auth/activate
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWY4OTI2MTM2YzRlZTIxMDAzMGFlY2IiLCJzdGF0dXMiOnRydWUsImVtYWlsIjoicGF0aWVudEB4b3JkLmNvbSIsImlhdCI6MTY0MzY4MDM1MywiZXhwIjoxNjQzNjgyMTUzfQ.DowtDm3acFF10r3Z99lqRTLM-iL1cPWp6vt-ZFKXZHA
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWZhMmRmZjgyOGYyZjcxNTliODkyM2MiLCJzdGF0dXMiOnRydWUsImVtYWlsIjoiaGluYUB4b3JkLmNvbSIsImlhdCI6MTY0Mzc4NTcyNywiZXhwIjoxNjQzNzg3NTI3fQ.FHCHFR6Nk3pofOzaTRQZjGi7aZNYf-Y_L2c9gHQbtZU
 
 {
-    "email": "patient@xord.com"
+    "email": "hina@xord.com"
 }

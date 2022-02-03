@@ -42,7 +42,7 @@ export class AppointmentService {
 
          try{
             const user = await this.userService.findUserByEmail(email);
-            console.log('validation func for',{email, user})
+            // console.log('validation func for',{email, user})
             if(user.type!==type) throw new BadRequestException(`${email} is not a ${type===1 ? 'doctor':'patient'}`);
             return user.id;
          }

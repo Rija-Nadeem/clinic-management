@@ -33,4 +33,5 @@ export class DashboardController {
   allDoctors() {
     return this.userService.getAllDoctors();
   }
+  
 }
